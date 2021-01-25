@@ -30,10 +30,10 @@ export class AppComponent {
 
   addResponsable() {
     this.responsables[this.responsables.length] = {
-      "nom" : "",
-      "email" : "",
-      "numero" : "",
-      "role" : ""
+      "nom" : "cliquez",
+      "email" : "tapez entrez pour valider",
+      "numero" : "remplir",
+      "role" : "pour"
     }
   }
 }
