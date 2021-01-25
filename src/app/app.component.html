@@ -2,14 +2,14 @@
   <div class="row align-items-center">
     <div class="col-12">
       <div>
-        <img src="../assets/skyscrapper.jpg" alt="bg" class="w-100 skyscrapper">
+        <img src="../assets/skyscrapper.jpg" alt="bg" class="skyscrapper">
         <i class="avatar"></i>
       </div>
-      <div style="margin-left: 260px;">
+      <div class="header-presentation">
         <h4>VEL CONPLURES ALTERA ORIGINIS EXUSTUS VEL VIVUS</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
       </div>
-      <div class="card" style="margin: 60px 0px 0px 120px; width: 75%;">
+      <div class="card">
         <div class="card-body border border-dark">
           <h4>Profil Organisation</h4>
           <form>
@@ -19,12 +19,12 @@
                 class="form-control input-lg">
             </div>
             <div class="row">
-              <div class="form-group col-4">
+              <div class="form-group col-sm-4 col-md-4 col-lg-4">
                 <label for="creationDate">Date Création *</label>
-                <input type="date" name="creationDate" id="creationDate" placeholder="Date Création *"
-                  class="form-control input-lg">
+                <input type="date" name="creationDate" id="creationDate" class="form-control input-lg"
+                  [ngModel]="currentDate | date:'yyyy-MM-dd'">
               </div>
-              <div class="form-group col-4">
+              <div class="form-group col-sm-4 col-md-4 col-lg-4">
                 <label for="countryRegion">Pays/Région *</label>
                 <input type="text" name="countryRegion" id="countryRegion" placeholder="Pays/Région *"
                   class="form-control input-lg">
@@ -51,14 +51,14 @@
                 class="form-control input-lg">
             </div>
             <div class="row">
-              <div class="form-group col-4">
+              <div class="form-group col-sm-4 col-md-4 col-lg-4">
                 <label for="forme">Forme juridique*</label>
                 <select name="forme" id="forme">
                   <option value="" disabled selected hidden>Forme juridique*</option>
                   <option value="lorem">lorem</option>
                 </select>
               </div>
-              <div class="form-group col-4">
+              <div class="form-group col-sm-4 col-md-4 col-lg-4">
                 <label for="personnality">Personnalité juridique*</label>
                 <select name="personnality" id="personnality">
                   <option value="" disabled selected hidden>Personnalité juridique*</option>
@@ -75,22 +75,22 @@
                 class="form-control input-lg">
             </div>
             <div class="row">
-              <div class="form-group col-4">
+              <div class="form-group col-sm-4 col-md-4 col-lg-4">
                 <label for="city">Ville*</label>
                 <input type="text" name="city" id="city" placeholder="Ville*" class="form-control input-lg">
               </div>
-              <div class="form-group col-4">
+              <div class="form-group col-sm-4 col-md-4 col-lg-4">
                 <label for="region">Région*</label>
                 <input type="text" name="region" id="region" placeholder="Région*" class="form-control input-lg">
               </div>
             </div>
             <div class="row">
-              <div class="form-group col-4">
+              <div class="form-group col-sm-4 col-md-4 col-lg-4">
                 <label for="phone">Numéro de téléphone*</label>
                 <input type="number" name="phone" id="phone" placeholder="Numéro de téléphone*"
                   class="form-control input-lg">
               </div>
-              <div class="form-group col-4">
+              <div class="form-group col-sm-4 col-md-4 col-lg-4">
                 <label for="zipCode">Code postal*</label>
                 <input type="number" name="zipCode" id="zipCode" placeholder="Code postal*"
                   class="form-control input-lg">
@@ -99,94 +99,108 @@
             <div class="border border-dark border-top mt-4 mb-4">
             </div>
             <h5>Responsables</h5>
-            <table class="table">
-              <thead style="background-color: gainsboro;">
-                <tr>
-                  <th scope="col">Nom Complet</th>
-                  <th scope="col">Rôle</th>
-                  <th scope="col">Numéro</th>
-                  <th scope="col">Email</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Scabandra Lbahria</td>
-                  <td>Directeur General</td>
-                  <td>+125649763665</td>
-                  <td>scabandra@mail.com</td>
-                </tr>
-                <tr>
-                  <td>Sridina Wld Lhay</td>
-                  <td>Directeur</td>
-                  <td>+135485663557</td>
-                  <td>sridina@mail.com</td>
-                </tr>
-                <tr>
-                  <td colspan="4" class="label-info">Ajouter un responsable <button
-                      class="btn btn-circle btn-default"><i class="fa fa-plus"></i></button></td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+              <table class="table w-75">
+                <thead style="background-color: gainsboro;">
+                  <tr>
+                    <th scope="col">Nom Complet</th>
+                    <th scope="col">Rôle</th>
+                    <th scope="col">Numéro</th>
+                    <th scope="col">Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let responsable of responsables, let i = index">
+                    <td *ngIf="!editableResponsable[i]" (click)="editableResponsable[i] = !editableResponsable[i]">
+                      {{responsable.nom}}</td>
+                    <td *ngIf="!editableResponsable[i]" (click)="editableResponsable[i] = !editableResponsable[i]">
+                      {{responsable.role}}</td>
+                    <td *ngIf="!editableResponsable[i]" (click)="editableResponsable[i] = !editableResponsable[i]">
+                      {{responsable.numero}}</td>
+                    <td *ngIf="!editableResponsable[i]" (click)="editableResponsable[i] = !editableResponsable[i]">
+                      {{responsable.email}}</td>
+                    <td *ngIf="editableResponsable[i]"><input type="text"
+                        (keydown.enter)="editableResponsable[i] = !editableResponsable[i]"
+                        [ngModelOptions]="{standalone: true}" autofocus [(ngModel)]="responsable.nom"></td>
+                    <td *ngIf="editableResponsable[i]"><input type="text"
+                        (keydown.enter)="editableResponsable[i] = !editableResponsable[i]"
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="responsable.role"></td>
+                    <td *ngIf="editableResponsable[i]"><input type="text"
+                        (keydown.enter)="editableResponsable[i] = !editableResponsable[i]"
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="responsable.numero"></td>
+                    <td *ngIf="editableResponsable[i]"><input type="text"
+                        (keydown.enter)="editableResponsable[i] = !editableResponsable[i]"
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="responsable.email"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" class="label-info">Ajouter un responsable <button class="btn btn-circle btn-default"
+                        (click)="addResponsable()"><i class="fa fa-plus"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div class="border border-dark border-top mt-4 mb-4">
             </div>
             <h5>Etablissements</h5>
-            <table class="table">
-              <thead style="background-color: gainsboro;">
-                <tr>
-                  <th scope="col">Nom</th>
-                  <th scope="col">Lieu</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>T Building</td>
-                  <td>
-                    Dakkar, atamo
-                    <span class="actions">
-                      <button class="btn btn-default">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                          class="bi bi-pen" viewBox="0 0 16 16">
-                          <path
-                            d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
-                        </svg>
-                      </button>
-                      <button class="btn btn-default">
-                        <i class="fa fa-trash"></i>
-                      </button>
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Far Building</td>
-                  <td>
-                    Abidjan, jali
-                    <span class="actions">
-                      <button class="btn btn-default">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                          class="bi bi-pen" viewBox="0 0 16 16">
-                          <path
-                            d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
-                        </svg>
-                      </button>
-                      <button class="btn btn-default">
-                        <i class="fa fa-trash"></i>
-                      </button>
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="4" class="label-info">Ajouter un etablissement <button
-                      class="btn btn-circle btn-default"><i class="fa fa-plus"></i></button></td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+              <table class="table">
+                <thead style="background-color: gainsboro;">
+                  <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Lieu</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>T Building</td>
+                    <td>
+                      Dakkar, atamo
+                      <span class="actions">
+                        <button class="btn btn-default">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-pen" viewBox="0 0 16 16">
+                            <path
+                              d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                          </svg>
+                        </button>
+                        <button class="btn btn-default">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Far Building</td>
+                    <td>
+                      Abidjan, jali
+                      <span class="actions">
+                        <button class="btn btn-default">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-pen" viewBox="0 0 16 16">
+                            <path
+                              d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                          </svg>
+                        </button>
+                        <button class="btn btn-default">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" class="label-info">Ajouter un etablissement <button
+                        class="btn btn-circle btn-default"><i class="fa fa-plus"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div class="border border-dark border-top mt-4 mb-4">
             </div>
             <div class="row card-footer">
-              <div class="col-8"></div>
-              <div class="col-4">
-                <button class="btn btn-secondary mr-4">Annuler</button>
-              <button class="btn btn-primary">Enregistrer</button>
+              <div class="col-sm-6 col-md-6 col-lg-6"></div>
+              <div class="col-sm-6 col-md-6 col-lg-6">
+                <button class="btn btn-primary btn-right">Enregistrer</button>
+                <button class="btn btn-secondary btn-right">Annuler</button>
               </div>
             </div>
           </form>

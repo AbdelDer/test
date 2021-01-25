@@ -1,81 +1,141 @@
 .skyscrapper {
-    position: relative;
-    top: 0;
-    left: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .avatar {
-    background: rgb(248, 247, 247);
-    border-radius: 20px;
-    font-size: 25px;
+  background: rgb(248, 247, 247);
+  border-radius: 20px;
+  font-size: 25px;
+  text-align: center;
+  margin-right: 2%;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 2%;
+  position: absolute;
+  top: 5%;
+  left: 6%;
+  width: 180px;
+  height: 180px;
+}
+
+h5 {
+  margin-left: 40px;
+}
+
+.form-group {
+  margin: 0px 40px 0px 40px;
+}
+
+.form-group>label {
+  padding-left: 5px;
+  /* padding-right: 5px; */
+  position: relative;
+  top: 18px;
+  left: 4px;
+  background-color: white;
+}
+
+.form-group>input {
+  height: 50px;
+  border-color: black;
+}
+
+.form-group>textarea {
+  height: 150px;
+  border-color: black;
+}
+
+.form-group>select {
+  height: 50px;
+  width: 100%;
+  border-color: black;
+}
+
+table {
+  margin: 0px 40px 0px 40px;
+  width: 80%;
+}
+
+.actions {
+  float: right;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  background-color: gainsboro;
+  color: gray;
+  float: right;
+}
+
+.label-info {
+  color: gray;
+  font-weight: bold;
+}
+
+.header-presentation {
+  margin-left: 260px;
+}
+
+.card {
+  margin: 60px 0px 0px 120px;
+  width: 75%;
+}
+
+@media only screen and (max-width: 768px) {
+
+  /* For mobile phones: */
+  .header-presentation {
+    margin-top: 14%;
+    margin-left: 2%;
     text-align: center;
-    margin-right: 10px;
-    border-radius:50%;
-    display:inline-block;
-    padding:10px;
-    position: absolute;
-    top: 120px;
-    left: 80px;
-    width: 180px;
-    height: 180px;
+  }
+
+  .avatar {
+    top: 1%;
+    left: 38%;
+    width: 80px;
+    height: 80px;
+  }
+
+  .skyscrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .card {
+    /* margin: 0px 0px 0px 0px; */
+    margin: auto;
+    width: 90%;
+  }
+
+  .form-group {
+    margin: auto;
   }
 
   h5 {
-      margin-left: 40px;
-  }
-  
-  .form-group{
-    margin:0px 40px 0px 40px;
-  } 
-
-  .form-group>label{
-    padding-left: 5px;
-    /* padding-right: 5px; */
-    position:relative;
-    top:18px;
-    left:4px;
-    background-color:white;
-  }
-  
-  .form-group>input{
-    height: 50px;
-    border-color: black;
-  }
-  
-  .form-group>textarea{
-    height: 150px;
-    border-color: black;
-  }
-  
-  .form-group>select{
-    height: 50px;
-    width: 100%;
-    border-color: black;
+    margin: 0;
   }
 
-  table{
-    margin: 0px 40px 0px 40px;
-    width: 80%;
+  table {
+    margin: 0px;
   }
 
   .actions {
-      float: right;
+    float: none;
   }
+}
 
-  .btn-circle {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border-radius: 15px;
-    background-color: gainsboro;
-    color: gray;
-    float: right;
-  }
-
-  .label-info {
-      color: gray;
-      font-weight: bold;
-  }
+.btn-right{
+  float: right;
+}
