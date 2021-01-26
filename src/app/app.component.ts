@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'test';
   editableResponsable : boolean[] = [false, false];
+  editableEtablissement : boolean[] = [false, false];
   currentDate = new Date();
   responsables : Responsable[] = [
     {
@@ -24,6 +25,17 @@ export class AppComponent {
     }
   ];
 
+  etablisements : Etablissement[] = [
+    {
+      "nom" : "T Building",
+      "lieu" : "Dakkar, atamo"
+    },
+    {
+      "nom" : "Far Building",
+      "lieu" : "Abidjan, jali"
+    }
+  ];
+
   change(event) {
     console.log(this.currentDate);
   }
@@ -36,6 +48,17 @@ export class AppComponent {
       "role" : "pour"
     }
   }
+
+  addEtablissement() {
+    this.etablisements[this.etablisements.length] = {
+      "nom" : "cliquez sur le bouton pour remplir",
+      "lieu" : "tapez entrez pour valider"
+    }
+  }
+
+  deleteEtablissemnt(i) {
+    this.etablisements.splice(i, 1);
+  }
 }
 
 export interface Responsable {
@@ -43,4 +66,9 @@ export interface Responsable {
   role: string;
   numero: string;
   email: string;
+}
+
+export interface Etablissement {
+  nom: string;
+  lieu: string;
 }
